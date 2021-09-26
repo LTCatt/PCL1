@@ -1,0 +1,28 @@
+﻿<Window x:Class="formHomeLeft"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:my="clr-namespace:pcl"
+    Title="frmHomeMain" FontFamily="Microsoft YaHei">
+    <Grid Name="panMain" Height="323" Width="491" VerticalAlignment="Top" UseLayoutRounding="True">
+        <Grid HorizontalAlignment="Center" Margin="15,17,0,51" VerticalAlignment="Center" Width="475" Height="255">
+            <Border Width="476" Height="256" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid Width="475" Height="255">
+                    <StackPanel Height="120" HorizontalAlignment="Left" Name="panTop" VerticalAlignment="Top" Orientation="Horizontal" />
+                    <StackPanel Height="120" HorizontalAlignment="Left" Name="panBottom" VerticalAlignment="Bottom" Orientation="Horizontal" />
+                </Grid>
+            </Border>
+        </Grid>
+        <my:Timer Height="43" HorizontalAlignment="Left" Margin="450,288,0,0" x:Name="timerLoad" VerticalAlignment="Top" Width="40" Interval="200" />
+        <Grid Margin="16,287,0,0" Name="panPage" VerticalAlignment="Top" Background="#01FFFFFF" Height="20" HorizontalAlignment="Center" UseLayoutRounding="True" Width="20">
+            <Border Name="btnPage1" VerticalAlignment="Center" Height="12" Width="12" Margin="3,0,0,0" IsHitTestVisible="False" HorizontalAlignment="Left" BorderThickness="6" BorderBrush="{DynamicResource Color4}" RenderTransformOrigin="0.5,0.5" Background="White" UseLayoutRounding="True">
+                <Border.RenderTransform>
+                    <RotateTransform Angle="45"/>
+                </Border.RenderTransform>
+            </Border>
+            <Grid.Effect>
+                <DropShadowEffect Color="White" ShadowDepth="0" BlurRadius="10"></DropShadowEffect>
+            </Grid.Effect>
+        </Grid>
+        <my:Timer Height="43" HorizontalAlignment="Left" Interval="5000" Margin="392,288,0,0" x:Name="timerPage" VerticalAlignment="Top" Width="52" IsEnabled="False" />
+    </Grid>
+</Window>

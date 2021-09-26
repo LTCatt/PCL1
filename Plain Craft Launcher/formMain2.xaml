@@ -1,0 +1,61 @@
+﻿<Window x:Class="formMain"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Plain Craft Launcher" ResizeMode="NoResize" WindowStyle="None" xmlns:my="clr-namespace:pcl" Background="{x:Null}" Icon="/pcl;component/Images/icon.ico" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+    <Grid Width="680" Height="458">
+        <Grid.Effect>
+            <DropShadowEffect ShadowDepth="0" Color="#FF242424" Opacity="0.6" RenderingBias="Performance" BlurRadius="7" />
+        </Grid.Effect>
+        <Grid Margin="5" Width="670" Height="448">
+            <Grid Name="panBack" Width="671" Height="449" Background="#FFFCFDFF">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="659*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="411*" />
+                </Grid.RowDefinitions>
+                <Image HorizontalAlignment="Right" Name="imgMainBg" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="None" />
+                <Grid HorizontalAlignment="Stretch" Name="panTop" VerticalAlignment="Stretch" Height="39" Margin="91,0,0,0" Grid.ColumnSpan="2" Background="#01FFFFFF">
+                    <Label Background="{DynamicResource ResourceKey=Color5}" Height="2" HorizontalAlignment="Left" Margin="10,0,0,0" Name="labTopSelect" VerticalAlignment="Top" Width="0" />
+                    <Image Height="17" HorizontalAlignment="Left" Margin="479,11,0,11" Name="picTopDownloadShine" Source="/pcl;component/Images/TopBar-Download.png" VerticalAlignment="Center" Width="17" Opacity="0" UseLayoutRounding="True" />
+                    <Image Height="17" HorizontalAlignment="Right" Margin="0,0,18,0" VerticalAlignment="Center" Width="17" Opacity="0.35" Name="picTopClose" Source="/pcl;component/Images/TopBar-Close.png" />
+                    <Image Height="3" HorizontalAlignment="Right" Margin="0,0,51,0" VerticalAlignment="Center" Width="17" Opacity="0.35" Name="picTopMin" Source="/pcl;component/Images/TopBar-Min.png" />
+                    <Rectangle Height="39" HorizontalAlignment="Right" Name="btnTopClose" VerticalAlignment="Top" Width="43" Fill="#01FFFFFF" Opacity="0.01" />
+                    <Rectangle Height="39" Margin="0,0,43,0" Name="btnTopMin" VerticalAlignment="Top" Fill="#01FFFFFF" HorizontalAlignment="Right" Width="33" Opacity="0.01" />
+                    <Image Height="17" HorizontalAlignment="Left" Margin="479,11,0,11" Name="picTopDownloadOpacity" Opacity="{Binding ElementName=labTopSelectDownload, Path=Opacity}" Source="/pcl;component/Images/TopBar-Download.png" UseLayoutRounding="True" VerticalAlignment="Center" Width="17" />
+                    <Label FontSize="16" Height="39" HorizontalContentAlignment="Center" Margin="0,0,76,0" Name="labTopSelectDownload" Padding="13,8,13,0" Opacity="0.35" Background="#01F5F5F5" HorizontalAlignment="Right" Width="33"></Label>
+                </Grid>
+                <Grid HorizontalAlignment="Stretch" Name="panMain" VerticalAlignment="Stretch" Grid.Row="1" Margin="91,0,0,0" Grid.ColumnSpan="2">
+
+                </Grid>
+                <Grid Width="92" Name="panLeftBg" Grid.RowSpan="2" SnapsToDevicePixels="True" UseLayoutRounding="True">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/pcl;component/Images/LeftBar-BG_Blue.png" Stretch="None" TileMode="Tile" Viewport="0,0,91.9885004432045,91.9885004432045" ViewportUnits="Absolute" />
+                    </Grid.Background>
+                    <TextBlock Name="labLeftVer" VerticalAlignment="Bottom" Foreground="White" Opacity="0.25" Padding="5" TextAlignment="Center" IsHitTestVisible="False"></TextBlock>
+                    <WebBrowser Height="15" HorizontalAlignment="Left" Margin="6,11,0,0" Name="webData" VerticalAlignment="Top" Width="15" IsHitTestVisible="False" Visibility="Collapsed" />
+                    <Image Source="/pcl;component/Images/Logo.png" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Name="imgLeftLogo" Margin="16,190,0,0" />
+                </Grid>
+                <StackPanel Name="panLeft" VerticalAlignment="Center" UseLayoutRounding="True" Grid.Row="1" HorizontalAlignment="Left">
+                    <Grid Height="35" Name="btnLeftLaunch" Tag="1" Background="#01FFFFFF" Visibility="Collapsed">
+                        <Label Content="启动" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="White" UseLayoutRounding="True" SnapsToDevicePixels="True" Margin="45,8,17,8" />
+                        <Image Source="/pcl;component/Images/appbar.3d.obj.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="6,0,0,0" UseLayoutRounding="False" IsHitTestVisible="False" />
+                    </Grid>
+                    <Grid Height="35" Opacity="0.35" Name="btnLeftSystem" Background="#01FFFFFF" Visibility="Collapsed">
+                        <Label Content="系统" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="White" UseLayoutRounding="True" SnapsToDevicePixels="True" Margin="45,8,17,8" />
+                        <Image Source="/pcl;component/Images/appbar.settings.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="6,0,0,0" UseLayoutRounding="False" IsHitTestVisible="False" />
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <StackPanel Height="39" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="106,5,0,0" Orientation="Horizontal" Name="panTopSelect">
+            <Label Content="首页" Name="labStartSelect首页" FontSize="16" Padding="13,8,13,0" Height="39" HorizontalContentAlignment="Center" Background="#01FFFFFF" Tag="1" Foreground="{DynamicResource ResourceKey=Color5}" />
+            <Label Content="下载" FontSize="16" Height="39" HorizontalContentAlignment="Center" Name="labStartSelect下载" Padding="13,8,13,0" Opacity="0.35" Background="#01FFFFFF" Foreground="{DynamicResource ResourceKey=Color5}" />
+            <Label Content="帮助" FontSize="16" Height="39" HorizontalContentAlignment="Center" Name="labStartSelect帮助" Padding="13,8,13,0" Opacity="0.35" Background="#01FFFFFF" Foreground="{DynamicResource ResourceKey=Color5}" Visibility="Collapsed" />
+            <Label Content="设置" FontSize="16" Height="39" HorizontalContentAlignment="Center" Name="labStartSelect设置" Padding="13,8,13,0" Opacity="0.35" Background="#01FFFFFF" Foreground="{DynamicResource ResourceKey=Color5}" />
+        </StackPanel>
+        <Label Name="labHint" VerticalAlignment="Top" Margin="84,374,0,0" Padding="8" IsHitTestVisible="False" FontSize="15" Foreground="White" Background="{DynamicResource Color4}" Opacity="0" HorizontalAlignment="Center" />
+    </Grid>
+</Window>

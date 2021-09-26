@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Checkbox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:my="clr-namespace:pcl"
+             mc:Ignorable="d" 
+             d:DesignHeight="33" d:DesignWidth="103" MinWidth="20" MinHeight="20" Background="#00000000" Foreground="#FF323232" FontSize="13">
+    <Grid HorizontalAlignment="Left" MinHeight="18" MaxHeight="18" MinWidth="20" Name="panMain" Opacity="0.8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="18" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Label Name="label" Grid.Column="1" Padding="0" Margin="8,0,0,0" VerticalContentAlignment="Center" Height="18" VerticalAlignment="Top" BorderBrush="Black" Content="Checkbox" Foreground="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Parent.Foreground}" FontFamily="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Parent.FontFamily}" FontSize="13" />
+        <Border BorderBrush="#FF333333" BorderThickness="2" Height="18" HorizontalAlignment="Left" Name="border" VerticalAlignment="Top" Width="18" CornerRadius="1">
+            <Grid Height="14" Name="Check" Width="14">
+                <Image Height="14" Name="imgBlack" Source="/pcl;component/Images/Checked-Black.png" Width="14" />
+                <Image Height="14" Name="imgBlue" Source="/pcl;component/Images/Checked-Blue.png" Width="14" Opacity="0" />
+                <Image Height="14"  Name="imgGray" Source="/pcl;component/Images/Checked-Gray.png" Width="14" Opacity="0" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

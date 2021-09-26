@@ -1,0 +1,459 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:my="clr-namespace:pcl"
+    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="formSetup"
+    Title="formSystemSetup" FontFamily="Microsoft YaHei" d:DesignHeight="374">
+    <Window.Resources>
+        <Style TargetType="{x:Type Label}" x:Key="SubTitle">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="15,10,5,0"/>
+            <Setter Property="Foreground" Value="#FF5C5C5C"/>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="panMain" Height="323" Width="740" VerticalAlignment="Top" Background="#01D8D8D8">
+        <Grid.Resources>
+            <Style TargetType="{x:Type my:Checkbox}">
+                <Setter Property="Margin" Value="15,0,0,0"/>
+                <Setter Property="Height" Value="28"/>
+                <Setter Property="Width" Value="1000"/>
+                <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+            </Style>
+            <Style TargetType="{x:Type my:Radiobox}">
+                <Setter Property="Margin" Value="15,0,0,0"/>
+                <Setter Property="Height" Value="28"/>
+                <Setter Property="Width" Value="1000"/>
+                <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+            </Style>
+            <Style TargetType="{x:Type Rectangle}">
+                <Setter Property="Height" Value="2"/>
+                <Setter Property="Stroke" Value="{DynamicResource ResourceKey=Color4}"/>
+                <Setter Property="Margin" Value="0,0,0,2"/>
+            </Style>
+            <Style TargetType="{x:Type TextBox}">
+                <!--防止指向动画-->
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Themes:ListBoxChrome x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                <Grid>
+                                    <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Grid>
+                            </Themes:ListBoxChrome>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <!--样式-->
+                <Setter Property="Width" Value="500"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="Margin" Value="40,5,0,0"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Height" Value="27" />
+                <Setter Property="BorderThickness" Value="0,0,0,2" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="SelectionOpacity" Value="0.2" />
+                <Setter Property="SelectionBrush" Value="{DynamicResource Color3}" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Padding" Value="3,0,0,0" />
+                <Setter Property="BorderBrush" Value="{DynamicResource Color4}" />
+            </Style>
+            <Style TargetType="{x:Type Label}" x:Key="SubTitle">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Padding" Value="15,10,5,0"/>
+                <Setter Property="Foreground" Value="#FF5C5C5C"/>
+            </Style>
+            <Style TargetType="{x:Type Label}" x:Key="Title">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Padding" Value="10,25,5,5"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=Color4}"/>
+            </Style>
+        </Grid.Resources>
+        <Grid Height="307" HorizontalAlignment="Left" Margin="100,8,0,0" VerticalAlignment="Top" Width="600" x:Name="panSetupHost">
+            <StackPanel x:Name="panBack" VerticalAlignment="Top" Margin="0,-3700,0,0">
+
+                <!---->
+                <Label Content="启动设置" Padding="10,5,5,5" Style="{StaticResource Title}"/><Rectangle x:Name="line启动设置"/>
+
+                <my:Checkbox x:Name="chLaunchTopmost" Context="Minecraft 窗口置顶" ToolTip="将 Minecraft 游戏窗口置于其它所有窗口上方。"  Tag="*LaunchTopmost" />
+                <my:Checkbox x:Name="chLaunchMending" Context="自动修复缺失的 OptiFine 与 Forge 主文件 *"  Tag="LaunchMending"/>
+                <my:Checkbox x:Name="chLaunchNatives" Context="启动时重新解压 Natives 文件 *" ToolTip="（高级设置）关闭此项可以加快游戏启动速度，但是如果文件有变动，游戏可能无法启动。（是 Natives，不是 Naives！）"  Tag="LaunchNatives"/>
+                    
+                <Label Content="Minecraft 文件夹" Style="{StaticResource SubTitle}" />
+                <StackPanel Margin="25,0,0,0" x:Name="panLaunchFolderList" />
+                <Grid Height="28" Margin="25,0,0,0" Background="#01FFFFFF" x:Name="btnLaunchFolderAdd"  >
+                    <Path Data="F1 M 39,46L 46,46L 46,39L 51,39L 51,46L 58,46L 58,51L 51,51L 51,58L 46,58L 46,51L 39,51L 39,46 Z M 31,25L 38,25L 38,18L 43,18L 43,25L 50,25L 50,30L 43,30L 43,37L 38,37L 38,30L 31,30L 31,25 Z M 18,39L 25,39L 25,32L 30,32L 30,39L 37,39L 37,44L 30,44L 30,51L 25,51L 25,44L 18,44L 18,39 Z " Fill="#FF5C5C5C" Height="18" Margin="15,10,0,0" Stretch="Fill" Width="18" VerticalAlignment="Top" HorizontalAlignment="Left" IsHitTestVisible="False" />
+                    <Label Content="添加……" FontFamily="{Binding Parent.Parent.FontFamily, RelativeSource={RelativeSource Self}}"  Height="18"  Padding="9,0,0,0" VerticalContentAlignment="Center"  Foreground="#FF5C5C5C" FontSize="13"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="33,10,0,0" IsHitTestVisible="False" />
+                </Grid>
+
+                <Label Content="启动器可见性" Style="{StaticResource SubTitle}"/>
+                <StackPanel Margin="25,0,0,0">
+                    <my:Radiobox Context="启动游戏后立即关闭" ToolTip="在启动游戏后立即关闭 PCL。这可能会导致部分功能失效（如修改窗口标题、抓取崩溃日志），不建议选择。"  Tag="LaunchVisibility/0" x:Name="raLaunchVisibility0" />
+                    <my:Radiobox Context="启动游戏后隐藏，并在 2 分钟后自动关闭" ToolTip="在游戏启动后，PCL 将自动隐藏，并且在 2 分钟后关闭。这既可以减轻 PCL 对游戏性能的影响，也可以使 PCL 的各项功能正常运转。" x:Name="raLaunchVisibility3"  Tag="LaunchVisibility/3" />
+                    <my:Radiobox Context="启动游戏后隐藏，并在游戏结束时自动关闭" ToolTip="在游戏启动后，PCL 将自动隐藏，并且在游戏退出时随游戏一起退出。如果你正在进行 Mod 测试等工作，建议选择此项以便于 PCL 抓取崩溃日志。" x:Name="raLaunchVisibility1"  Tag="LaunchVisibility/1" />
+                    <my:Radiobox Context="启动游戏后最小化" Tag="LaunchVisibility/4" x:Name="raLaunchVisibility4" />
+                    <my:Radiobox Context="保持启动器不变" ToolTip="启动游戏后不隐藏也不关闭启动器，保持原样不变。" x:Name="raLaunchVisibility2"  Tag="LaunchVisibility/2"/>
+                </StackPanel>
+                <Grid Margin="25,0,0,0"   x:Name="panLaunchVisibility0"   Height="56">
+                     <StackPanel Orientation="Vertical" VerticalAlignment="Center"  Height="56" x:Name="panLaunchVisibility02">
+                         <my:Checkbox Context="显示游戏日志"  x:Name="chLaunchLog" Tag="LaunchLog"/>
+                         <my:Checkbox Context="将游戏日志中的警告信息显示进日志 *"  x:Name="chLaunchLogWarn" Tag="LaunchLogWarn" ToolTip="将 Minecraft 日志输出中含有“warn”字样的条目输出到 PCL 日志。"/>
+                     </StackPanel>
+                </Grid>
+                
+                <Label Content="Minecraft 进程优先级" Style="{StaticResource SubTitle}"/>
+                <StackPanel Margin="40,0,0,0" Orientation="Horizontal">
+                    <my:Radiobox x:Name="raLaunchLevel0" Context="高" Width="150" Margin="0" ToolTip="使 Minecraft 的运算优先运行。这会提高 Minecraft 的性能，但是会导致 Minecraft 以外的程序卡顿。"  Tag="*LaunchLevel/0"/>
+                    <my:Radiobox Context="中" Width="150" Margin="0" ToolTip="Minecraft 的运行与其它程序同级，将与其它程序共同使用运算资源。" x:Name="raLaunchLevel1"  Tag="*LaunchLevel/1" />
+                    <my:Radiobox Context="低" Width="150" Margin="0" ToolTip="使其它程序的运算优先运行。这让 Minecraft 不会导致其它程序卡顿，但是会使 Minecraft 卡顿。如果你需要挂机，这是不错的选择。" x:Name="raLaunchLevel2"  Tag="*LaunchLevel/2"/>
+                </StackPanel>
+                
+                <Label Content="版本隔离" Style="{StaticResource SubTitle}"/>
+                <StackPanel Margin="25,0,0,0">
+                    <my:Radiobox x:Name="raLaunchSplit0" Context="不隔离任何版本" ToolTip="所有版本的存档、MOD、资源包等全部通用，有可能导致 MOD 在不同版本之间发生冲突。"  Tag="LaunchSplit/0"/>
+                    <my:Radiobox Context="仅隔离 Forge，不隔离其它版本" ToolTip="仅将 Forge 版进行版本隔离，这使得 MOD 间不会发生冲突，非 Forge 版的资源也可以共用。" x:Name="raLaunchSplit1"  Tag="LaunchSplit/1" />
+                    <my:Radiobox Context="隔离全部版本" ToolTip="每个版本的存档、MOD、资源包等全部隔离，互不影响。" x:Name="raLaunchSplit2"  Tag="LaunchSplit/2"/>
+                </StackPanel>
+                
+                <Label Content="游戏窗口" Style="{StaticResource SubTitle}"/>
+                    <StackPanel Orientation="Horizontal" Margin="25,0,0,0">
+                        <my:Radiobox x:Name="raLaunchMode0" Context="窗口" Width="150"  Tag="LaunchMode/0" />
+                        <my:Radiobox x:Name="raLaunchMode1" Context="全屏" Width="150" Margin="0"  Tag="LaunchMode/1"/>
+                    </StackPanel>
+                <Grid x:Name="panLaunchMode1" Height="33" Margin="55,0,0,0">
+                    <StackPanel Height="33" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label Content="宽" Style="{StaticResource SubTitle}"  Padding="15,10,15,0"/>
+                        <TextBox x:Name="textLaunchModeWindowWidth" Width="155" Margin="0,5,20,0" Tag="=LaunchModeWindowWidth/Integer/200/10000"/>
+                        <Label Content="高" Style="{StaticResource SubTitle}"  Padding="15,10,15,0"/>
+                        <TextBox x:Name="textLaunchModeWindowHeight" Width="155" Margin="0,5,20,0" Tag="=LaunchModeWindowHeight/Integer/50/5000"/>
+                                            <Label Content="重置"  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14" Foreground="{DynamicResource Color4}" Padding="9,0,0,0" Margin="0,1,0,0" Background="#01FFFFFF" x:Name="btnLaunchModeWindowReset" ToolTip="将窗口尺寸更改为默认设置。" Width="0"/>
+                    </StackPanel>
+                </Grid>
+
+                <Label x:Name="labLaunchSkin" Content="离线模式皮肤" Style="{StaticResource SubTitle}" ToolTip="离线模式下使用的皮肤。只在单人游戏中可见，部分选项只在 1.8 及以上版本中适用。"/>
+                    <StackPanel Margin="25,0,0,0">
+                        <my:Radiobox x:Name="raLaunchSkin0" Context="随机"    Tag="*LaunchSkin/0"  ToolTip="让 Minecraft 从 Steve 与 Alex 中随机选择皮肤。"/>
+                        <my:Radiobox x:Name="raLaunchSkin1" Context="使用 Steve 皮肤"    Tag="*LaunchSkin/1" />
+                        <my:Radiobox x:Name="raLaunchSkin2" Context="使用 Alex 皮肤"    Tag="*LaunchSkin/2" />
+                        <my:Radiobox x:Name="raLaunchSkin3" Context="使用正版玩家皮肤"   Tag="*LaunchSkin/3"   ToolTip="使用某个正版玩家的皮肤。PCL 将默认加载你的离线用户名对应的皮肤。"/>
+                <Grid x:Name="panLaunchSkin3" Height="0"  Margin="25,0,0,0" Opacity="0">
+                    <StackPanel Height="33" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label Content="正版玩家用户名" Style="{StaticResource SubTitle}" Padding="15,10,15,0"/>
+                        <TextBox x:Name="textLaunchSkinName" Width="355" Margin="0,5,20,0" Tag="*=LaunchSkinName/UserName" ToolTip="这个用户名不一定得是你的用户名。留空将默认视为你的离线用户名。如果没有这个正版玩家，效果则与随机一致。"/>
+                    </StackPanel>
+                </Grid>
+                    </StackPanel>
+                
+                <Label Content="Java 路径" x:Name="labLaunchJava" Style="{StaticResource SubTitle}" Tag="Java 路径"/>
+                <StackPanel Orientation="Horizontal" Width="540" HorizontalAlignment="Left">
+                    <TextBox x:Name="textLaunchJava" Tag="*SetupJavaPath/Java" ToolTip="填写 javaw.exe 所在的文件夹。" Width="360"/>
+                    <Label Content="手动选择" Width="70" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="14" Foreground="{DynamicResource Color4}" Padding="0" Margin="0,1,0,0" Background="#01FFFFFF" x:Name="btnLaunchJavaHand"/>
+                    <Label Content="自动查找" Width="70" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="14" Foreground="{DynamicResource Color4}" Padding="0" Margin="0,1,0,0" Background="#01FFFFFF" x:Name="btnLaunchJavaAuto"/>
+                </StackPanel>
+                <Label Content="最大内存（MB）" x:Name="labLaunchMaxRam" Style="{StaticResource SubTitle}" Tag="最大内存（MB）"/>
+                <TextBox x:Name="textLaunchMaxRam"   Tag="*LaunchMaxRam/Ram/256/32768"/>
+                <Label Content="Minecraft 附加信息" x:Name="labLaunchShow" Style="{StaticResource SubTitle}" Tag="Minecraft 附加信息"/>
+                <TextBox x:Name="textLaunchShow" ToolTip="它将会显示在 Minecraft 主页面左下角与调试页面左上角。较老的 Minecraft 版本不支持此功能。"  Tag="LaunchShow/NoPush"/>
+                <Label Content="Minecraft 窗口标题" x:Name="labLaunchTitle" Style="{StaticResource SubTitle}" Tag="Minecraft 窗口标题"/>
+                <TextBox x:Name="textLaunchTitle" Tag="LaunchTitle/Any"/>
+                <Label Content="自动进入服务器 *" x:Name="labLaunchServer" Style="{StaticResource SubTitle}" Tag="自动进入服务器 *"/>
+                <TextBox x:Name="textLaunchServer" Tag="LaunchServer/Any" ToolTip="（高级设置）在打开 Minecraft 时自动进入该服务器。用英文冒号分割 IP 与端口号。"/>
+                <Label Content="Java 虚拟机参数 *"  Style="{StaticResource SubTitle}" x:Name="labLaunchJVM"  Tag="Java 虚拟机参数 *"/>
+                <StackPanel Orientation="Horizontal" Width="540" HorizontalAlignment="Left" x:Name="panLaunchJVM">
+                    <TextBox x:Name="textLaunchJVM" ToolTip="（高级设置）启动 Minecraft 时所使用的 JVM 优化参数，如果修改错误很可能导致无法启动或游戏崩溃等严重问题。可以设置为空。"  Tag="LaunchJVM/Any" Width="500"/>
+                    <Label Content="重置" Width="40" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="14" Foreground="{DynamicResource Color4}" Padding="0" Margin="0,1,0,0" Background="#01FFFFFF" x:Name="btnLaunchJVMReset" ToolTip="将 JVM 参数更改为默认设置。" Tag="-XX:+UseG1GC -XX:-UseAdaptiveSizePolicy -XX:-OmitStackTraceInFastThrow -Dfml.ignoreInvalidMinecraftCertificates=True -Dfml.ignorePatchDiscrepancies=True"/>
+                </StackPanel>
+                
+                <!---->
+                <Label Content="界面设置" Style="{StaticResource Title}"/>
+                <Rectangle x:Name="line界面设置"/>
+
+                <my:Checkbox Context="打开启动器时显示 Logo"  x:Name="chUiShowLogo" Tag="UiShowLogo" />
+
+                <Label Content="启动器不透明度（%）" x:Name="labUiLauncherOpacity" Style="{StaticResource SubTitle}" Tag="启动器不透明度（%）" />
+                <TextBox x:Name="textUiLauncherOpacity" Tag="UiLauncherOpacity/Integer/10/100" />
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="主题" Style="{StaticResource SubTitle}" VerticalAlignment="Top" />
+                    <my:Radiobox x:Name="raUiTheme0" Context="龙猫蓝" Width="90" Grid.Row="1" Tag="UiTheme/0" Margin="40,0,0,0" HorizontalAlignment="Left" />
+                    <my:Radiobox x:Name="raUiTheme1" Context="玄素黑" Width="90" Grid.Row="1" Tag="UiTheme/1" Margin="130,0,0,0" HorizontalAlignment="Left" />
+                    <my:Radiobox x:Name="raUiTheme2" Context="CB 橙" Width="90" Grid.Row="1" Tag="UiTheme/2" Margin="220,0,0,0" HorizontalAlignment="Left" />
+                    <my:Radiobox x:Name="raUiTheme3" Context="小草绿" Width="90" Grid.Row="1" Tag="UiTheme/3" Margin="310,0,0,0" HorizontalAlignment="Left" />
+                    <my:Radiobox x:Name="raUiTheme4" Context="自定义" Width="90" Grid.Row="1" Tag="UiTheme/4" Margin="400,0,0,0" HorizontalAlignment="Left" />
+                    <Label Content="隐藏主题" Style="{StaticResource SubTitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="2"  />
+                    <my:Radiobox x:Name="raUiTheme100" Context="？？？" Width="90" Grid.Row="3" Tag="UiTheme/100" Margin="40,0,0,0" HorizontalAlignment="Left" IsEnabled="False" />
+                    <my:Radiobox x:Name="raUiTheme101" Context="？？？" Width="90" Grid.Row="3" Tag="UiTheme/101" Margin="130,0,0,0" HorizontalAlignment="Left" IsEnabled="False" />
+                </Grid>
+                <Grid x:Name="panUiTheme4" Height="0" Opacity="0">
+                    <StackPanel VerticalAlignment="Center" Height="58">
+                        <Label Content="自定义主题" Style="{StaticResource SubTitle}" VerticalAlignment="Top" />
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Margin="40,0,0,0" Height="28" HorizontalAlignment="Left" Background="#01FFFFFF" Width="90" x:Name="btnUiCustom1" >
+                                <Ellipse Width="17" Height="17" Fill="{DynamicResource Color1}" HorizontalAlignment="Left" Stroke="#FF5C5C5C" StrokeThickness="2" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
+                                <Label Content="最浅色" FontFamily="{Binding Parent.Parent.FontFamily, RelativeSource={RelativeSource Self}}"  Height="18"  Padding="9,0,0,0" VerticalContentAlignment="Center"  Foreground="#FF5C5C5C" FontSize="13"  VerticalAlignment="Bottom"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Height="28" HorizontalAlignment="Left" Background="#01FFFFFF" Width="90" x:Name="btnUiCustom2">
+                                <Ellipse Width="17" Height="17" Fill="{DynamicResource Color2}" HorizontalAlignment="Left" Stroke="#FF5C5C5C" StrokeThickness="2" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
+                                <Label Content="浅色" FontFamily="{Binding Parent.Parent.FontFamily, RelativeSource={RelativeSource Self}}"  Height="18"  Padding="9,0,0,0" VerticalContentAlignment="Center"  Foreground="#FF5C5C5C" FontSize="13"  VerticalAlignment="Bottom"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Height="28" HorizontalAlignment="Left" Background="#01FFFFFF" Width="90" x:Name="btnUiCustom3">
+                                <Ellipse Width="17" Height="17" Fill="{DynamicResource Color3}" HorizontalAlignment="Left" Stroke="#FF5C5C5C" StrokeThickness="2" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
+                                <Label Content="饱和色" FontFamily="{Binding Parent.Parent.FontFamily, RelativeSource={RelativeSource Self}}"  Height="18"  Padding="9,0,0,0" VerticalContentAlignment="Center"  Foreground="#FF5C5C5C" FontSize="13"  VerticalAlignment="Bottom"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Height="28" HorizontalAlignment="Left" Background="#01FFFFFF" Width="90" x:Name="btnUiCustom4">
+                                <Ellipse Width="17" Height="17" Fill="{DynamicResource Color4}" HorizontalAlignment="Left" Stroke="#FF5C5C5C" StrokeThickness="2" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
+                                <Label Content="深色" FontFamily="{Binding Parent.Parent.FontFamily, RelativeSource={RelativeSource Self}}"  Height="18"  Padding="9,0,0,0" VerticalContentAlignment="Center"  Foreground="#FF5C5C5C" FontSize="13" VerticalAlignment="Bottom" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Height="28" HorizontalAlignment="Left" Background="#01FFFFFF" Width="90" x:Name="btnUiCustom5">
+                                <Ellipse Width="17" Height="17" Fill="{DynamicResource Color5}" HorizontalAlignment="Left" Stroke="#FF5C5C5C" StrokeThickness="2" VerticalAlignment="Bottom" Margin="0,0,0,1"/>
+                                <Label Content="最深色" FontFamily="{Binding Parent.Parent.FontFamily, RelativeSource={RelativeSource Self}}"  Height="18"  Padding="9,0,0,0" VerticalContentAlignment="Center"  Foreground="#FF5C5C5C" FontSize="13" VerticalAlignment="Bottom" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+
+                <Label Content="背景图片" Style="{StaticResource SubTitle}" />
+                <StackPanel Orientation="Horizontal"  Margin="30,0,0,0">
+                    <my:Button Height="35" Width="118" Text="设置图片" HorizontalAlignment="Left" Margin="10,8,0,0" x:Name="btnUiBackgroundSet" ToolTip="建议图片大小：740×323。" />
+                    <my:Button Height="35" Width="118" Text="重置图片" HorizontalAlignment="Left" Margin="10,8,0,0" ColorType="RED" x:Name="btnUiBackgroundReset"/>
+                    <my:Checkbox x:Name="chUiBackground" Visibility="Collapsed" />
+                </StackPanel>
+                <Grid Margin="25,0,0,0" x:Name="panUiBackground" Height="120">
+                    <StackPanel   VerticalAlignment="Center" Height="120" x:Name="panUiBackground2">
+                        <Label Content="显示方式" Style="{StaticResource SubTitle}"/>
+                        <StackPanel Margin="40,0,0,0" Orientation="Horizontal">
+                            <my:Radiobox Context="右下" Width="77" Margin="0" x:Name="raUiBackgroundShow0" Tag="UiBackgroundShow/0" />
+                            <my:Radiobox Context="左上" Width="77" Margin="0" x:Name="raUiBackgroundShow1" Tag="UiBackgroundShow/1" />
+                            <my:Radiobox Context="右上" Width="77" Margin="0" x:Name="raUiBackgroundShow2" Tag="UiBackgroundShow/2" />
+                            <my:Radiobox Context="居中" Width="77" Margin="0" x:Name="raUiBackgroundShow3" Tag="UiBackgroundShow/3" />
+                            <my:Radiobox Context="拉伸" Width="77" Margin="0" x:Name="raUiBackgroundShow4" Tag="UiBackgroundShow/4" />
+                            <my:Radiobox Context="适应" Width="77" Margin="0" x:Name="raUiBackgroundShow5" Tag="UiBackgroundShow/5" />
+                        </StackPanel>
+                        <Label Content="背景图片不透明度（%）" x:Name="labUiBackgroundOpacity" Style="{StaticResource SubTitle}" Tag="背景图片不透明度（%）" />
+                        <TextBox x:Name="textUiBackgroundOpacity" Width="475" Tag="UiBackgroundOpacity/Integer/0/100" />
+                    </StackPanel>
+                </Grid>
+                <Label Content="从网址下载图片 *" Style="{StaticResource SubTitle}" x:Name="labUiBackgroundURL" Tag="从网址下载图片 *" Padding="40,10,5,0" />
+                <TextBox Width="475" ToolTip="（高级设置）每次启动时都在指定的网址处下载图片，并且在下一次打开时更新显示。你可以利用这个功能进行内容的动态显示。" x:Name="textUiBackgroundURL" Tag="UiBackgroundURL/URL" Margin="65,5,0,0" />
+
+                <Label Content="顶部图片" Style="{StaticResource SubTitle}" />
+                <StackPanel Orientation="Horizontal"  Margin="30,0,0,0">
+                    <my:Button Height="35" Width="118" Text="设置图片" HorizontalAlignment="Left" Margin="10,8,0,0"  x:Name="btnUiBarSet" ToolTip="建议图片大小：740×92。" />
+                    <my:Button Height="35" Width="118" Text="重置图片" HorizontalAlignment="Left" Margin="10,8,0,0" ColorType="RED" x:Name="btnUiBarReset"/>
+                </StackPanel>
+                <Label Content="从网址下载图片 *" Style="{StaticResource SubTitle}" x:Name="labUiBarURL" Tag="从网址下载图片 *" Padding="40,10,5,0" />
+                <TextBox Width="475" ToolTip="（高级设置）每次启动时都在指定的网址处下载图片，并且在下一次打开时更新显示。你可以利用这个功能进行内容的动态显示。" x:Name="textUiBarURL" Tag="UiBarURL/URL" Margin="65,5,0,0" />
+
+                <Label Content="背景音乐" Style="{StaticResource SubTitle}"/>
+                <StackPanel Orientation="Horizontal"  Margin="30,0,0,0">
+                    <my:Button Height="35" Width="118" Text="设置音乐" HorizontalAlignment="Left" Margin="10,8,0,0"  x:Name="btnUiBgmSet"/>
+                    <my:Button Height="35" Width="118" Text="重置音乐" HorizontalAlignment="Left" Margin="10,8,0,0" ColorType="RED" x:Name="btnUiBgmReset"/>
+                    <my:Checkbox x:Name="chUiBgm" Visibility="Collapsed" />
+                </StackPanel>
+                <Grid x:Name="panUiBgm"   Height="28" Margin="25,0,0,0">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center"  Height="28" x:Name="panUiBgm2">
+                        <my:Checkbox Context="打开启动器时自动播放背景音乐"  x:Name="chUiBgmAuto" Tag="UiBgmAuto" ToolTip="如果关闭此项，则需要人工点击右上角的音乐开关按钮来播放背景音乐。" />
+                    </StackPanel>
+                </Grid>
+
+                <Label Content="隐藏功能 *" Style="{StaticResource SubTitle}" ToolTip="（高级设置）隐藏选中的页面或是功能入口。" x:Name="labUiHide" />
+                <StackPanel Margin="40,0,0,0" Orientation="Horizontal" x:Name="panUiHide1">
+                    <my:Checkbox Context="下载页" Width="100" Margin="0" x:Name="chUiHiddenDownload" Tag="UiHiddenDownload" />
+                    <my:Checkbox Context="Minecraft 下载" Width="140" Margin="0" x:Name="chUiHiddenMinecraft" Tag="UiHiddenMinecraft" />
+                    <my:Checkbox Context="OptiFine 下载" Width="135" Margin="0" x:Name="chUiHiddenOptiFine" Tag="UiHiddenOptiFine" />
+                    <my:Checkbox Context="Forge 下载" Width="140" Margin="0" x:Name="chUiHiddenForge" Tag="UiHiddenForge" />
+                </StackPanel>
+                <StackPanel Margin="40,0,0,0" Orientation="Horizontal" x:Name="panUiHide2">
+                    <my:Checkbox Context="设置页" Width="100" Margin="0" x:Name="chUiHiddenSetup" ToolTip="隐藏设置页后如果还想进入设置页，请双击版本号。" Tag="UiHiddenSetup" />
+                </StackPanel>
+
+                <!---->
+                <Label Content="下载设置" Style="{StaticResource Title}"/>
+                <Rectangle x:Name="line下载设置" />
+                <my:Checkbox Context="在任务栏显示下载进度 *" x:Name="chDownProcess" Tag="DownProcess" />
+
+                <Label Content="下载源" Style="{StaticResource SubTitle}" ToolTip="在优先的下载源失效时，PCL 会自动切换为另一下载源，所以通常情况下不需要改变此设置。" Name="labDownSource" />
+                <StackPanel Orientation="Horizontal" Margin="25,0,0,0" Name="panDownVersion">
+                    <Label Content="Minecraft 版本列表" Style="{StaticResource SubTitle}" Width="165"/>
+                    <my:Radiobox Context="官方源优先" Width="125"  ToolTip="官方的版本列表最新，但是获取较为缓慢。只要没有获取失败，就建议选择此项。" x:Name="raDownVersion0" Tag="DownVersion/0" />
+                    <my:Radiobox Context="BMCLAPI 优先" Width="150" Margin="0"  ToolTip="BMCLAPI 的版本列表需要一定时间来进行更新，所以它不是最新的，但是获取速度比官方源快一些。" x:Name="raDownVersion1" Tag="DownVersion/1" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="25,0,0,0" ToolTip="Minecraft 的 Libraries 与 Assets 文件。" Background="#01FFFFFF" Name="panDownAssets">
+                    <Label Content="Minecraft 资源文件" Style="{StaticResource SubTitle}" Width="165"/>
+                    <my:Radiobox Context="官方源优先" Width="125"  x:Name="raDownAssets0" Tag="DownAssets/0" ToolTip="官方源可以同时下载多个文件。只要没有全部下载失败，就建议选择此项。" />
+                    <my:Radiobox Context="BMCLAPI 优先" Width="150" Margin="0"  x:Name="raDownAssets1" Tag="DownAssets/1" ToolTip="BMCLAPI 下载稳定，但只能同时下载 2 个文件。在下载个数上千的资源文件时，这会严重影响下载速度。" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="25,0,0,0" ToolTip="Minecraft 的主文件（即版本 Jar）与 Libraries 文件。" Background="#02FFFFFF" Name="panDownMinecraft">
+                    <Label Content="Minecraft 支持库" Style="{StaticResource SubTitle}" Width="165"/>
+                    <my:Radiobox Context="官方源优先" Width="125"  x:Name="raDownMinecraft0" Tag="DownMinecraft/0" />
+                    <my:Radiobox Context="BMCLAPI 优先" Width="150" Margin="0"  x:Name="raDownMinecraft1" Tag="DownMinecraft/1" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="25,0,0,0" Name="panDownOptiFine">
+                    <Label Content="OptiFine 主文件" Style="{StaticResource SubTitle}" Width="165"/>
+                    <my:Radiobox Context="官方源优先" Width="125"  x:Name="raDownOptiFine0" Tag="DownOptiFine/0" />
+                    <my:Radiobox Context="BMCLAPI 优先" Width="150" Margin="0"  x:Name="raDownOptiFine1" Tag="DownOptiFine/1" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="25,0,0,0" Name="panDownForge">
+                    <Label Content="Forge 主文件" Style="{StaticResource SubTitle}" Width="165"/>
+                    <my:Radiobox Context="官方源优先" Width="125"  x:Name="raDownForge0" Tag="DownForge/0" />
+                    <my:Radiobox Context="BMCLAPI 优先" Width="150" Margin="0"  x:Name="raDownForge1" Tag="DownForge/1" />
+                </StackPanel>
+
+                <Label Content="Minecraft" Style="{StaticResource SubTitle}" Name="labDownMinecraft" />
+                <my:Checkbox Context="启动 Minecraft 时检查资源文件" Margin="40,0,0,0" x:Name="chDownMinecraftAssetsHint" Tag="DownMinecraftAssetsHint"  ToolTip="在启动 Minecraft 时将会检查对应的资源文件（Assets）是否存在，如果不存在将会弹窗提示。"/>
+                <Grid x:Name="panDownMinecraftAssetsHint" Height="28" Margin="25,0,0,0">
+                    <StackPanel Height="28" Orientation="Horizontal" VerticalAlignment="Center">
+                        <my:Checkbox Context="若资源文件有缺失则自动下载" x:Name="chDownMinecraftAssetsAuto" Tag="DownMinecraftAssetsAuto" />
+                    </StackPanel>
+                </Grid>
+
+                <Label Content="OptiFine"  Style="{StaticResource SubTitle}" Visibility="Collapsed" />
+                <my:Checkbox  x:Name="chDownOptiFineOpen" Margin="40,0,0,0"  Context="下载结束时打开安装程序" Tag="DownOptiFineOpen" Visibility="Collapsed" />
+                <my:Checkbox  Margin="40,0,0,0"  Context="下载结束时打开下载文件夹"  x:Name="chDownOptiFineFolder" Tag="DownOptiFineFolder" Visibility="Collapsed" />
+
+                <Label Content="Forge"  Style="{StaticResource SubTitle}" />
+                <my:Radiobox  x:Name="raDownForgeAction0" Margin="40,0,0,0"  Context="下载结束时尝试自动安装" Tag="DownForgeAction/0" />
+                <my:Radiobox  Margin="40,0,0,0"  Context="下载结束时打开下载文件夹"  x:Name="raDownForgeAction1" Tag="DownForgeAction/1"  />
+
+                <Label Content="下载文件夹路径" x:Name="labDownFolder" Style="{StaticResource SubTitle}" Tag="下载文件夹路径" />
+                <TextBox x:Name="textDownFolder" Tag="DownFolder/Folder" ToolTip="存放下载的 OptiFine 与 Forge 的文件夹。默认（什么也不填）为 \PCL\download 。" />
+                <Label Content="同时下载的最大文件数" Style="{StaticResource SubTitle}" Tag="同时下载的最大文件数" x:Name="labDownMaxinum" />
+                <StackPanel Orientation="Horizontal" Width="540" HorizontalAlignment="Left" Name="panDownMaxinum">
+                    <TextBox  x:Name="textDownMaxinum" ToolTip="允许同时下载的文件数。" Tag="DownMaxinum/Integer/1/50" />
+                    <Label Content="重置" Width="40" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="14" Foreground="{DynamicResource Color4}" Padding="0" Margin="0,1,0,0" Background="#01FFFFFF" x:Name="btnDownMaxinumReset" Tag="15" />
+                </StackPanel>
+
+                <!---->
+                <Label Content="主页设置" Style="{StaticResource Title}"/><Rectangle x:Name="line主页设置" />
+                    <my:Checkbox  Context="显示 Minecraft 更新提示"  x:Name="chHomeUpdate" ToolTip="在 Minecraft 发现新版本时在开始游戏按钮下方显示更新提示。" Tag="HomeUpdate" />
+                    <Grid Margin="0" Height="28" x:Name="panHomeUpdate" >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Height="28">
+                            <my:Checkbox Context="只提示正式版 Minecraft 更新"  x:Name="chHomeUpdateRelease" ToolTip="在快照、预发布版更新时不显示更新提示。" Tag="HomeUpdateRelease"/>
+                        </StackPanel>
+                    </Grid>
+                    <my:Checkbox x:Name="chHomeSave" Context="保存密码"  Tag="*HomeSave" />
+                    <Grid Margin="0" x:Name="panHomeSave" Height="28" >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Height="28">
+                            <my:Checkbox x:Name="chHomeAutologin" Context="自动登录"  Tag="HomeAutologin"/>
+                        </StackPanel>
+                    </Grid>
+
+                <my:Checkbox Context="启用推荐" x:Name="chHomeEnabled" Tag="HomeEnabled" />
+
+                <my:Checkbox Context="随机隐藏部分没有图片的推荐 *"  Margin="40,0,0,0" x:Name="chHomeHide" ToolTip="（高级设置）如果一个推荐项目没有图片，每次启动时它都只有一半几率被展示。" Tag="HomeHide" />
+                    <my:Checkbox Context="不显示不满一页的推荐 *"  Margin="40,0,0,0" x:Name="chHomeFull" ToolTip="（高级设置）如果推荐项目不足以填满一页（不足 4 个），则不显示那一页。" Tag="HomeFull" />
+                    <my:Checkbox Context="自动播放推荐内容"  Margin="40,0,0,0" x:Name="chHomeAutoplay" ToolTip="推荐会自动翻页。" Tag="HomeAutoplay" />
+                    <Grid Margin="55,0,0,0" Height="28" x:Name="panHomeAutoplay" >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Height="28">
+                            <my:Radiobox Context="快速"  Width="100" x:Name="raHomeAutoplaySpeed0" Tag="HomeAutoplaySpeed/0" ToolTip="每 5 秒切换一次页面。"/>
+                            <my:Radiobox Context="中速"  Width="100" x:Name="raHomeAutoplaySpeed1" Tag="HomeAutoplaySpeed/1" ToolTip="每 10 秒切换一次页面。"/>
+                            <my:Radiobox Context="慢速"  Width="100" x:Name="raHomeAutoplaySpeed2" Tag="HomeAutoplaySpeed/2" ToolTip="每 20 秒切换一次页面。"/>
+                        </StackPanel>
+                    </Grid>
+                
+                    <Label Content="默认推荐源" Style="{StaticResource SubTitle}" Padding="40,10,5,0" />
+                
+                    <my:Checkbox x:Name="chHomePCLPush" Context="PCL 推荐"  Margin="70,0,0,0" ToolTip="在首页订阅中显示 PCL 官方推荐的优质地图、资源、教程等。不含广告请放心食用。" Tag="HomePCLPush" />
+                    <my:Checkbox x:Name="chHomeMCBBSPush" Context="我的世界中文论坛"  Margin="70,0,0,0" Tag="HomeMCBBSPush" />
+                <my:Checkbox x:Name="chHomeTbPush" Context="Minecraft 吧精品"  Margin="70,0,0,0" Tag="HomeTbPush" />
+                <my:Checkbox x:Name="chHomeMojangPush" Context="Mojang 官方"  Margin="70,0,0,0" Tag="HomeMojangPush" ToolTip="在首页订阅中显示 Mojang 官方的文章推送，由 MCBBS 进行中文翻译。" />
+                <my:Checkbox x:Name="chHomeForumPush" Context="Minecraft Forum"  Margin="70,0,0,0" Tag="HomeForumPush" />
+                
+                    <Label Content="第三方推荐源" Style="{StaticResource SubTitle}" Padding="40,10,5,0" ToolTip="点击推荐源左边的图标可以切换启用与禁用状态。" Visibility="Collapsed"/>
+                        <StackPanel Width="500" x:Name="panHomeSourceList" Margin="55,5,0,0" UseLayoutRounding="True" HorizontalAlignment="Left" Visibility="Collapsed">
+                            <my:ListItem Height="40"   Logo="/pcl;component/Images/Block-Add.png" SubText="" MainText="添加……" ShowButton="False" CanCheck="False" x:Name="itemHomeSourceAdd" ToolTip="添加一个新的第三方推荐源。"/>
+                        </StackPanel>
+                
+                <Label x:Name="labHomeVersion" Content="版本列表 *" Style="{StaticResource SubTitle}" />
+                    <my:Checkbox x:Name="chHomeVersionSwap" Context="智能折叠" Margin="40,0,0,0" ToolTip="（高级设置）过时快照、版本、愚人节版本会被自动分类为“折叠的版本”。"  Tag="HomeVersionSwap" />
+                    <my:Checkbox Context="智能分类老版本" Margin="40,0,0,0"   x:Name="chHomeVersionOld" ToolTip="（高级设置）过老的 Minecraft 版本会被自动分类为“过时的版本”。" Tag="HomeVersionOld" />
+
+                <!---->
+                <Label Content="系统设置" Style="{StaticResource Title}"/><Rectangle x:Name="line系统设置"/>
+                
+                    
+                    
+                    <my:Checkbox x:Name="chSysFeed" Context="加入用户体验改进计划" ToolTip="开启后 PCL 将会收集部分数据，以助于发现、修复未知 Bug，调整设置内容等。PCL 不会收集任何用户隐私数据。"  Tag="*SysFeed" />
+                    <my:Checkbox x:Name="chSysTest" Context="开启调试模式 *" ToolTip="（高级设置）调试模式下程序出现非致命错误时也会显示错误提示。"  Tag="*SysTest" Checked="False"/>
+                <my:Checkbox x:Name="chSysOffline" Context="强制开启离线模式 *"  ToolTip="（高级设置）离线模式下将会模拟没有网络时的表现。开启后启动器的启动速度会大幅加快。没有网络连接时会自动开启。" Tag="SysOffline" Checked="False"/>
+                    <my:Checkbox Height="28" x:Name="chSysUpdate" Margin="15,0,0,0" VerticalContentAlignment="Bottom" Context="检查启动器更新" ToolTip="是否在每次打开启动器时都检查启动器更新。"  Tag="SysUpdate"/>
+                        <Grid x:Name="panSysUpdate" Height="56" Margin="25,0,0,0">
+                    <Grid Height="56" VerticalAlignment="Center" x:Name="panSysUpdate2">
+                                <my:Radiobox x:Name="raSysUpdateHint" Context="仅提示" VerticalContentAlignment="Bottom" Width="150" ToolTip="发现更新时，在启动游戏按钮下方显示更新提示。" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left"  Tag="SysUpdateHint/True" Checked="True" Margin="15,0,0,0"/>
+                                <my:Radiobox Context="自动下载并安装" x:Name="raSysUpdateSetup" VerticalContentAlignment="Bottom" VerticalAlignment="Top" Height="28" Margin="165,0,0,0" ToolTip="发现更新时直接自动下载并安装。"  Tag="SysUpdateHint/False" Width="180" HorizontalAlignment="Left"/>
+                        <my:Checkbox Context="接收测试版本的启动器更新" Height="28" Margin="15,28,0,0"  VerticalContentAlignment="Bottom" ToolTip="接收尚处于测试版的启动器更新，类似于 Minecraft 的预发布版。"  x:Name="chSysUpdateTest" Tag="SysUpdateTest"/>
+                    </Grid>
+                        </Grid>
+                <Label Content="低内存警告" Style="{StaticResource SubTitle}" ToolTip="在电脑内存低于指定值时显示警告。" Name="labSysLowMem"/>
+                <StackPanel Margin="40,0,0,0" Orientation="Horizontal" Name="panSysLowMem">
+                    <my:Radiobox x:Name="raSystemWarn0" Context="关闭" Width="150" Margin="0" Tag="*SystemWarn/0"/>
+                    <my:Radiobox x:Name="raSystemWarn100" Context="100 MB" Width="150" Margin="0" Tag="*SystemWarn/100"/>
+                    <my:Radiobox x:Name="raSystemWarn300" Context="300 MB" Width="150" Margin="0" Tag="*SystemWarn/300"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Margin="10,15,0,0">
+                    <my:Button Height="35" Width="120" Text="意见反馈" Margin="10,0,0,0" x:Name="btnSysBack" VerticalAlignment="Bottom"/>
+                    <my:Button Height="35" x:Name="btnSysLog" Width="120" Text="打开日志" Margin="10,0,0,0" VerticalAlignment="Bottom"  />
+                    <my:Button Height="35" x:Name="btnSysFolder" Width="250" Text="打开 PCL 文件夹" Margin="10,0,0,0" VerticalAlignment="Bottom"  />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Margin="10,10,0,0">
+                    <my:Button Height="35" Width="120" Text="清理缓存"  Margin="10,0,0,0" x:Name="btnSysCache" VerticalAlignment="Bottom" ToolTip="删除启动器下载的皮肤缓存、推荐缓存等缓存文件。" />
+                    <my:Button Height="35" Width="120" Text="清理支持库"  Margin="10,0,0,0" x:Name="btnSysLib" VerticalAlignment="Bottom" ToolTip="删除 libraries 文件夹（OptiFine 与 Forge 文件例外）。若 Minecraft 1.5 及以下版本启动失败，可以尝试此项。" />
+                    <my:Button Height="35" Width="120" Text="清理版本信息"  Margin="10,0,0,0" x:Name="btnSysVersion" VerticalAlignment="Bottom" ToolTip="删除 PCL 对各个版本的独立配置文件。" />
+                    <my:Button ColorType="RED" Height="35" x:Name="btnSysAll" Text="重置启动器" Width="120" Margin="10,0,0,0" VerticalAlignment="Bottom" ToolTip="清空启动器的所有设置以及在 .minecraft 文件夹中留下的所有痕迹。" />
+                </StackPanel>
+                
+                <!---->
+                <Label Content="关于" Style="{StaticResource Title}"/>
+                <Rectangle x:Name="line关于" />
+
+                <StackPanel Orientation="Horizontal" Width="600" HorizontalAlignment="Left" Margin="0,5,0,0">
+                    <Grid Height="110" Width="110" VerticalAlignment="Top">
+                        <Image Source="/pcl;component/Images/icon.ico" Width="96" Height="96" x:Name="imgAboutLogo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,6,0,0"/>
+                    </Grid>
+                    <Grid Width="490">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Style="{StaticResource SubTitle}" FontWeight="Bold" Content="作者" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="0,10,8,0"/>
+                        <Label Style="{StaticResource SubTitle}" Content="龙腾猫跃（百度贴吧：yhhcat）" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,10,5,0" Grid.Column="1"/>
+                        <Label Style="{StaticResource SubTitle}" FontWeight="Bold" Content="特别鸣谢" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="0,10,8,0" Grid.Row="1"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,10,5,0" Grid.Row="1" Grid.Column="1" FontSize="15" Foreground="#FF5C5C5C">
+                            bangbang93（BMCLAPI，bmclapi.bangbang93.com）<LineBreak/>MilkMaster<LineBreak/>DoodleHuang<LineBreak/>wahaha216
+                        </TextBlock>
+                        <Label Style="{StaticResource SubTitle}" FontWeight="Bold" Content="DLL 使用" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="0,10,8,0" Grid.Row="2"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,10,5,0" Grid.Row="2" Grid.Column="1" FontSize="15" Foreground="#FF5C5C5C">
+                            Newtonsoft.Json（Copyright © James Newton-King）<LineBreak/>Ionic.Zip（Copyright © Dino Chiesa）<LineBreak/>.Net Framework（Copyright © Microsoft Corporation）
+                        </TextBlock>
+                        <Label Style="{StaticResource SubTitle}" FontWeight="Bold" Content="免责声明" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="0,10,8,0" Grid.Row="3"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,10,5,0" Grid.Row="3" Grid.Column="1" FontSize="15" Foreground="#FF5C5C5C" TextWrapping="Wrap">
+                            Minecraft 版权归 Mojang AB 所有，使用本软件产生的版权问题，软件制作者概不负责。如有能力，请支持正版。
+                        </TextBlock>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Margin="5,15,0,15">
+                    <my:Button Height="35" x:Name="btnAboutQQ" Width="284" Text="加入 PCL 反馈 QQ 群" Margin="10,0,0,0"   />
+                    <my:Button Height="35" x:Name="btnAboutDonate" Width="137" Text="捐助作者" Margin="10,0,0,0" VerticalAlignment="Bottom" ToolTip="没钱的话 PCL 服务器就没戏了，然后就没法下载更新了，然后我为了维持服务器就得加广告，然后我就会被打死……"  />
+                    <my:Button Height="35" x:Name="btnAboutFolder" Width="137" Text="意见反馈" Margin="10,0,0,0" VerticalAlignment="Bottom"  />
+                </StackPanel>
+
+                <!---->
+            </StackPanel>
+        </Grid>
+        <my:Selecter Foreground="{DynamicResource ResourceKey=Color4}" HorizontalAlignment="Left" Margin="0,8,0,0" x:Name="selecter" VerticalAlignment="Top"  Width="78" ClickToChange="False"/>
+        <my:VScroll Foreground="{DynamicResource ResourceKey=Color4}" HorizontalAlignment="Right" Margin="0,8,8,0" x:Name="scroll" Width="10" Height="307" VerticalAlignment="Top" />
+        <my:Timer HorizontalAlignment="Left" Margin="12,104,0,0" x:Name="timerLeft" VerticalAlignment="Top" Interval="100" /><my:Selecter  Foreground="#FFB6CB14"  HorizontalAlignment="Left"  x:Name="selecterHide" VerticalAlignment="Bottom" Width="78"   Margin="0,0,0,8" ClickToChange="True"/>
+    </Grid>
+</Window>

@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="RoundProcessbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="296" d:DesignWidth="140" MaxHeight="{Binding RelativeSource={RelativeSource Self}, Path=Width}" MinHeight="{Binding RelativeSource={RelativeSource Self}, Path=Width}" BorderBrush="#FF3896FF">
+    <Path Data="M50,0L50,20A50,50,0,0,1,80,50L100,50A50,50,0,0,0,50,0z" Fill="{Binding RelativeSource={RelativeSource Self}, Path=Parent.BorderBrush}" Name="Round" Height="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Width}" Width="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Width}" />
+</UserControl>

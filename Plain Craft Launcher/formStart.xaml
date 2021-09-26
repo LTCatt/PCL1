@@ -1,0 +1,25 @@
+﻿<Window x:Class="formStart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" ResizeMode="NoResize" WindowStyle="None" xmlns:my="clr-namespace:pcl" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="#00000000" ShowInTaskbar="False" Focusable="False" ShowActivated="False" UseLayoutRounding="True" Opacity="0">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="panStack" Background="#01FFFFFF">
+        <Image Source="/pcl;component/Images/icon.ico" Width="96" Height="96" Name="img" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image.Effect>
+                <DropShadowEffect Opacity="0.45" ShadowDepth="2" BlurRadius="10" Color="{DynamicResource ColorE4}"></DropShadowEffect>
+            </Image.Effect>
+        </Image>
+        <!--   <Label FontSize="17" Padding="0,8,0,0" Foreground="#FF2B75C9" Visibility="Collapsed" Name="labProcess" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label.Effect>
+                <DropShadowEffect Color="White" ShadowDepth="0" Opacity="0.5"></DropShadowEffect>
+            </Label.Effect>
+        </Label>
+        <StackPanel.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </StackPanel.Triggers> -->
+    </StackPanel>
+</Window>

@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="Button"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" BorderBrush="#FF303030" Focusable="True" FontSize="14" Name="panMain" Background="#01F8F8F8" Opacity="0.8" UseLayoutRounding="True" BorderThickness="0" Padding="0,0,1,0">
+    <Border CornerRadius="1" Name="Border" BorderThickness="1" BorderBrush="{Binding ElementName=panMain, Path=BorderBrush}" Background="#7FFFFFFF" UseLayoutRounding="True">
+        <Label Content="Command" FontFamily="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Parent.FontFamily}" FontSize="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Parent.FontSize}" FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Parent.FontWeight}" HorizontalAlignment="Center" Name="labText" VerticalAlignment="Center" Foreground="{Binding ElementName=panMain, Path=BorderBrush}" Padding="0,0,0,1" Margin="0" />
+    </Border>
+</UserControl>

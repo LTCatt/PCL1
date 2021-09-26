@@ -1,0 +1,38 @@
+﻿<Window x:Class="formDownloadRight"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:my="clr-namespace:pcl"
+    Title="frmDownload" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignWidth="248" SizeToContent="WidthAndHeight" FontFamily="Microsoft YaHei">
+    <Grid Name="panMain" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="323" Width="0" HorizontalAlignment="Center" Opacity="0">
+        <Label Content="没有下载任务" Name="labNull" HorizontalAlignment="Center" VerticalAlignment="Top" IsHitTestVisible="False" Margin="0,146,3,0" FontSize="19" Foreground="{DynamicResource Color3}" Opacity="0" />
+        <Grid Margin="5,9,0,0" Name="panBack" Background="#01FFFFFF" Height="305" VerticalAlignment="Top" HorizontalAlignment="Left" Width="203">
+            <StackPanel Orientation="Vertical" UseLayoutRounding="True" Name="panShow" VerticalAlignment="Center">
+<!--
+                <Grid Width="198" Margin="0,5,0,10" Tag="Minecraft 15w32a">
+                    <Path Data="F1 M 38,19C 47.3888,19 55,21.0147 55,23.5038L 55,25.5C 55,27.9853 47.3888,30 38,30C 28.6112,30 21,27.9853 21,25.5L 21,23.5C 21,21.0147 28.6112,19 38,19 Z M 55,52.5C 55,54.9853 47.3888,57 38,57C 28.6112,57 21,54.9853 21,52.5L 21,46.5C 21,48.9853 28.6112,51 38,51C 47.384,51 54.9921,48.9874 55,46.5039L 55,52.5 Z M 55,43.5C 55,45.9853 47.3888,48 38,48C 28.6112,48 21,45.9853 21,43.5L 21,37.5C 21,39.9853 28.6112,42 38,42C 47.384,42 54.9921,39.9874 55,37.5038L 55,43.5 Z M 55,34.5C 55,36.9853 47.3888,39 38,39C 28.6112,39 21,36.9853 21,34.5L 21,28.5C 21,30.9853 28.6112,33 38,33C 47.384,33 54.9921,30.9874 55,28.5038L 55,34.5 Z " Fill="{DynamicResource Color4}" Height="19" Margin="9,9,0,0" Stretch="Fill" Width="17" HorizontalAlignment="Left" VerticalAlignment="Top" UseLayoutRounding="False" />
+                    <Label Content="Minecraft 15w32a" FontSize="16" Foreground="{DynamicResource Color4}" VerticalContentAlignment="Center" Margin="35,0,0,0" Height="36" VerticalAlignment="Top" Padding="0" UseLayoutRounding="False" />
+                    <TextBlock Height="2" VerticalAlignment="Top" Margin="5,37,0,0" Background="{DynamicResource Color2}" HorizontalAlignment="Left" Width="188" />
+                    <TextBlock Height="2" VerticalAlignment="Top" Margin="5,37,0,0" Background="{DynamicResource Color4}" HorizontalAlignment="Left" Width="91" />
+                    <StackPanel HorizontalAlignment="Left" Margin="5,45,0,0" VerticalAlignment="Top" Width="188">
+                        <Grid Height="22">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="116*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image Height="14" HorizontalAlignment="Left" Margin="4,4,0,0" VerticalAlignment="Top" Width="14" Source="/pcl;component/Images/Stats-Finish.png" />
+                            <Label Margin="23,0,0,0" Padding="0,0,3,0" VerticalContentAlignment="Center" Foreground="#FF4B4B4B" FontSize="12" Content="ffffffffffffffffffffffffffffffffffffffffffffff" />
+                            <Label Content="下载成功" FontSize="12" Foreground="#FF4B4B4B" HorizontalAlignment="Right" Padding="0" VerticalContentAlignment="Center" Margin="0,0,3,0" Opacity="0.6" MaxWidth="50" Grid.Column="1" />
+                        </Grid>
+                        <Grid Height="22">
+                            <Image Height="14" HorizontalAlignment="Left" Margin="4,4,0,0" VerticalAlignment="Top" Width="14" Source="/pcl;component/Images/Stats-Running.png" />
+                            <Label Content="15w32a.jar" HorizontalAlignment="Left" Margin="23,0,0,0" Padding="0" VerticalContentAlignment="Center" Foreground="#FF4B4B4B" FontSize="12" MaxWidth="110" />
+                            <Label Content="52%" FontSize="12" Foreground="#FF4B4B4B" HorizontalAlignment="Right" Padding="0" VerticalContentAlignment="Center" Margin="0,0,3,0" Opacity="0.6" MaxWidth="50" />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+-->
+            </StackPanel>
+        </Grid>
+        <my:VScroll HorizontalAlignment="Right" Margin="0,9,6,9" x:Name="scroll" Opacity="0" IsHitTestVisible="False" />
+    </Grid>
+</Window>

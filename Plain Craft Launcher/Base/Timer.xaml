@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Timer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="35" d:DesignWidth="47" Visibility="Collapsed" MinWidth="40" MinHeight="35" MaxHeight="35" BorderThickness="1" Foreground="Black" BorderBrush="#DC0A78FF" Background="#A055A4FF">
+    <Grid Height="35" Name="MainGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+        <Label BorderThickness="1" Content="1000" DataContext="{Binding}" FontSize="10" FontWeight="Normal" Foreground="#C9FFFFFF" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Name="TimeShow" Padding="0" Target="{Binding}" VerticalContentAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Margin="5,0,5,2" />
+        <Label BorderThickness="1" Content="1" DataContext="{Binding}" FontSize="10" FontWeight="Normal" Foreground="#C9FFFFFF" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Name="NameShow" Padding="0" Target="{Binding}" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="0,2,0,0" />
+    </Grid>
+</UserControl>

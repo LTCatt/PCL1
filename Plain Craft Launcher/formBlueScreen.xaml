@@ -1,0 +1,18 @@
+﻿<Window x:Class="formBlueScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" ResizeMode="NoResize" Topmost="True" WindowStyle="None" Background="Black" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="554" d:DesignWidth="879" Cursor="None" xmlns:my="clr-namespace:pcl" ShowInTaskbar="False" Title="Easter Egg" Left="0" Top="0" Width="1147" Height="667" WindowState="Maximized" FontFamily="Microsoft YaHei" UseLayoutRounding="True">
+    <Grid Background="#FF0379D9" IsHitTestVisible="False" Visibility="Hidden" Name="panMain">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="450" Width="850">
+            <Label Content=":(" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="100" />
+            <Label Content="你的电脑遇到问题，需要重新启动。" FontSize="27" Foreground="White" HorizontalAlignment="Left" Margin="0,143,0,0" VerticalAlignment="Top" />
+            <StackPanel HorizontalAlignment="Left" Margin="0,189,0,0" VerticalAlignment="Top" Orientation="Horizontal">
+                <Label Content="我们只收集某些错误信息，然后你可以重新启动。(完成" FontSize="27" Foreground="White" />
+                <Label Content="0" FontSize="27" Foreground="White" Padding="0,5" Name="labProcess" />
+                <Label Content="%)" FontSize="27" Foreground="White" Padding="0,5" />
+            </StackPanel>
+            <Label Content="如果你想了解更多信息，则可以稍后在线搜索此错误:" FontSize="21" Foreground="White" HorizontalAlignment="Left" Margin="0,303,0,0" VerticalAlignment="Top" />
+            <Label Content="PLAIN_CRAFT_LAUNCHER_HINTS_OVERFLOW" FontSize="21" Foreground="White" HorizontalAlignment="Left" Margin="0,339,0,0" VerticalAlignment="Top" />
+            <my:Timer Height="67" HorizontalAlignment="Left" Margin="86,89,0,0" x:Name="timerAnimation" VerticalAlignment="Top" Width="72" Interval="100" />
+        </Grid>
+    </Grid>
+</Window>
